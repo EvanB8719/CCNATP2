@@ -32,7 +32,7 @@ La gateway sert à connecter ma machine au réseau internet et permet de sortir 
 * première IP du réseau : `10.33.0.1`
 * dernière IP du réseau : `10.33.3.254`
 
-#### Pour changer d'adresse IP : 
+#### Pour changer d'adresse IP :    
     Rechercher dans le windows "panneau de configuration", cliquez sur Réseau et internet, puis sur Centre réseau et passage. Cliquez sur votre wifi (il y a le signal à coté). Ensuite cliquez sur propriétés, chercher dans la liste "Protocole Internet version 4(TCP/IPv4)",cliquez dessus puis sur propriétés. Sélectionnez "utiliser l'adresse IP suivante", puis configurer sa nouvelle IP.
 
 ### B. NMAP
