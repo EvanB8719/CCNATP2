@@ -78,16 +78,19 @@ La gateway sert à connecter ma machine au réseau internet et permet de sortir 
 
 
 ### DHSP ###
-Adressse DHCP : 10.33.3.254 
-    Bail obtenu : vendredi 4 janvier 2019 12:58:51
-    Bail expirant : vendredi 4 janvier 2019 14:58:50
+* Adressse DHCP : 10.33.3.254 
+* Bail obtenu : vendredi 4 janvier 2019 12:58:51
+* Bail expirant : vendredi 4 janvier 2019 14:58:50
+
 - Fonctionnement DHCP : Un client DHCP (ordinateur) demande une adresse IP à un serveur DHCP. Le client demande ensuite un bail au réseau. Les serveurs DHCP lui propose une adresse IP avec une durée. Le client sélectionne la première adresse IP et demande de l'utilisé. Le serveur DHCP accorde l'adresse et le client peut se connecter au réseau. 
+
 - Pour demander une nouvelle adresse IP : 
     - Ecrire en ligne de commande :
         - ipconfig /release
         - ipconfig /renew
 
+
 ### DNS ###
-Adresse DNS : 8.8.8.8
-Adresse google.com : 216.58.215.46
-Adresse ynov.com : 217.70.184.38
+* Adresse DNS : 8.8.8.8
+* Adresse google.com : 216.58.215.46
+* Adresse ynov.com : 217.70.184.38
