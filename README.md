@@ -50,3 +50,44 @@ La gateway sert à connecter ma machine au réseau internet et permet de sortir 
 *  Adresse IP de ma machine : `169.254.167.68`
 * Adresse IP de l'autre machine : `169.254.167.69`
 * Notre masque réseau : `255.255.255.0 `
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### DHSP ###
+Adressse DHCP : 10.33.3.254 
+    Bail obtenu : vendredi 4 janvier 2019 12:58:51
+    Bail expirant : vendredi 4 janvier 2019 14:58:50
+- Fonctionnement DHCP : Un client DHCP (ordinateur) demande une adresse IP à un serveur DHCP. Le client demande ensuite un bail au réseau. Les serveurs DHCP lui propose une adresse IP avec une durée. Le client sélectionne la première adresse IP et demande de l'utilisé. Le serveur DHCP accorde l'adresse et le client peut se connecter au réseau. 
+- Pour demander une nouvelle adresse IP : 
+    - Ecrire en ligne de commande :
+        - ipconfig /release
+        - ipconfig /renew
+
+### DNS ###
+Adresse DNS : 8.8.8.8
+Adresse google.com : 216.58.215.46
+Adresse ynov.com : 217.70.184.38
