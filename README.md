@@ -94,3 +94,19 @@ La gateway sert à connecter ma machine au réseau internet et permet de sortir 
 * Adresse DNS : 8.8.8.8
 * Adresse google.com : 216.58.215.46
 * Adresse ynov.com : 217.70.184.38
+
+Après un reverse lookup, on obtient : 
+
+PS C:\Users\evanb> nslookup 78.78.21.21
+* Serveur :   UnKnown
+* Address:  10.33.10.20
+
+* Nom :    host-78-78-21-21.mobileonline.telia.com
+* Address:  78.78.21.21
+
+PS C:\Users\evanb> nslookup 92.16.54.88
+* Serveur :   UnKnown
+* Address:  10.33.10.20
+
+* Nom :    host-92-16-54-88.as13285.net
+* Address:  92.16.54.88
