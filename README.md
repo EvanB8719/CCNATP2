@@ -1,83 +1,99 @@
-# TP 2 Exploration de Réseau d’un point de vue client.
+# TP 2 - Exploration du réseau d'un point de vue client
 
-## 1 Exploration locale en solo.
 
-#### Interface WiFi : 
-*	Nom : Qualcomm Atheros QCA61x4A Wireless Network Adapter
-*	Adresse MAC : 98-22-EF-99-4F-75
-*	Adresse IP : `10.33.2.188`
-*	Adresse réseau :`10.33.0.0`
-*	Adresse Broadcast : `10.33.3.255`
-#### Interface Ethernet : 
-*	Nom : Bluetooth Device (Personal Area Network)
-*	Adresse MAC : 98-22-EF-99-4F-76
-*	Adresse IP : non-connecté
-*	Gateway carte wifi : `10.33.3.253`
+## I. Exploration locale en solo
+### 1. Affichage d'informations sur la pile TCP/IP locale
+#### En ligne de commande
+##### Affichez les infos des cartes réseau de votre PC
+    Le nom, l'adresse MAC et l'adresse IP de l'interface WiFi:
+         Nom: Carte réseau sans fil WiFi
+         Adresse MAC: F8-34-41-F8-18-2B
+         Adresse Ip:10.33.255.255
+    Le nom, l'adresse MAC et l'adresse IP de l'interface Ethernet
+        Nom: Carte Ethernet Ethernet
+        Pour le reste je ne sais pas je ne suis pas connecté avec elle.
+    Déterminer, l'adresse de réseau et l'adresse de broadcast: 
+        Adresse réseau: 10.33.0.0
+        Adresse de broadcast: 10.33.255.255
+##### Affichez votre gateway
+Avec la commande précédente (ipconfig /all) on peut voir l'adresse gateway sous le nom de "passerelle par défault" elle est égal à 10.33.3.253
+#### En graphique (GUI : Graphical User Interface)
+##### Trouvez comment afficher les informations sur une carte IP (change selon l'OS)
+Sur windows on peut retrouver les informations dans l'onglet "Centre réseau et partage" de l'onglet "Réseau et internet" du panneau de configuration. 
+#### Questions, à quoi sert la gateway dans le réseau d'Ingésup ?
+La paserelle d'ingésup sert à connecter le réseau local au réseau internet et il utilise potentiellement des par feu ou/et des proxis
+### 2. Modifications des informations
+#### A. Modification d'adresse IP - pt. 1
+##### Calculez la première et la dernière IP disponibles du réseau 
+La première adresse est 10.33.0.1 et la dernière est 10.33.255.252
+##### Changez l'adresse IP de votre carte WiFi pour une autre
+C'est ici que l'on change une ip sous windows
+![](https://github.com/antoine33520/CCNA/blob/master/TP2/changementipwindows.png?raw=true)
+#### B. nmap
+Avec l'utilisation de la commande donné dans l'énnoncé on obtient toutes les ip utilisés 
+![](https://github.com/antoine33520/CCNA/blob/master/TP2/resultatnmap.png?raw=true)
 
-#### Pour l'interface GUI : 
-
-    Clique droit sur le petit logo wifi, ouvrir les paramètres réseau et internet. Dans modifier vos paramètres réseau, cliquez sur afficher vos propriétés réseau.
-
-* Adresse ip : `10.33.2.188/22`
-* Adresse MAC : 98-22-EF-99-4F-75
-* gateway : `10.33.3.253`
-
-    	à quoi sert la gateway dans le réseau d'Ingésup ? 
-La gateway sert à connecter ma machine au réseau internet et permet de sortir du reseau pour pouvoir me connecter à un autre réseau. 
-
-## 2. Modifications des informations
-
-### A. Modification d'adresse IP - pt. 1
-
-* première IP du réseau : `10.33.0.1`
-* dernière IP du réseau : `10.33.3.254`
-
-#### Pour changer d'adresse IP :    
-    Rechercher dans le windows "panneau de configuration", cliquez sur Réseau et internet, puis sur Centre réseau et passage. Cliquez sur votre wifi (il y a le signal à coté). Ensuite cliquez sur propriétés, chercher dans la liste "Protocole Internet version 4(TCP/IPv4)",cliquez dessus puis sur propriétés. Sélectionnez "utiliser l'adresse IP suivante", puis configurer sa nouvelle IP.
-
-### B. NMAP
-
-- découverte de NMAP 
-
-### C. Modification d'adresse IP - pt. 2
-
-- adresse ip fonctionne 
-- en modifiant le gateway, on a plus internet car on modifie le routeur de sortie.
+Ensuite on change l'Ip pour en prendre une disponnible et pouvoir aller sur internet 
 
 ## II. Exploration locale en duo
 
-3. Modification d'adresse IP
-*  Adresse IP de ma machine : `169.254.167.68`
-* Adresse IP de l'autre machine : `169.254.167.69`
-* Notre masque réseau : `255.255.255.0 `
+### Modification d'adresse IP
+
+Pour modifier l'adresse IP d'une machine sur Windows, il faut aller dans les paramètres réseaux, centre réseaux et partage, puis changer son IPV4 en plaçant les 2 machines sous le meme masque pour qu'elles communiquent entre elles.
+    
+### Utilisation d'un des deux comme gateway
+    
+Pour cela, a l'aide d'un cable RJ45, nous allons permettre à la machine qui a desactivé la connexion de pouvoir acceder a internet en passant par la connexion de l'autre machine.
+    
+### Petit chat privé ?
+
+De même, nous allons utiliser netcat pour permettre aux 2 machines de communiquer entre elles.
+
+Le pc serveur qui fera office de serveur rentrera la commande suivante :
+
+    nc.exe -l -p 8888
+
+Le pc qui fera office de client rentrera la commande :
+    
+    nc.exe "adresse ip de la machine serveur" 8888
+
+![](https://github.com/antoine33520/CCNA/blob/master/TP2/chat%20incroyable.jpg?raw=true)
+    
+    
+###  Wireshark
+
+Nous allons utiliser l'outil wireshark qui permet d'observer la trame qui circule entre les 2 cartes ethernet,
+    
+Pendant un ping:
+
+![](https://github.com/antoine33520/CCNA/blob/master/TP2/wireshark_ping.png?raw=true)
+
+Pendant l'utilisation de netcat:
+
+![](https://github.com/antoine33520/CCNA/blob/master/TP2/wireshark_ncat.png?raw=true)
 
 
+Pendant que le PC1 sert du PC2 comme gateway:
+
+![](https://github.com/antoine33520/CCNA/blob/master/TP2/wireshark_sans_filtrage.png?raw=true)
+    
+### Firewall
+
+Nous allons faire fonctionner notre Firewall pour permettre de, à la fois l'activer, autoriser le ping et activer le nc sur un port spécifique.
+
+On configure le Firewall pour que l'OS accepte le ping.
+
+![](https://github.com/antoine33520/CCNA/blob/master/TP2/regle_firewall_ping.PNG?raw=true)
+    
+    
+On choisis arbitrairement un port entre 1024 et 20000, afin de communiquer via netcat.
+
+![](https://github.com/antoine33520/CCNA/blob/master/TP2/regle_firewall_netcat.png?raw=true)
 
 
+## III. Manipulations d'autres outils/protocoles côté client
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### DHSP ###
+### DHSP
 * Adressse DHCP : 10.33.3.254 
 * Bail obtenu : vendredi 4 janvier 2019 12:58:51
 * Bail expirant : vendredi 4 janvier 2019 14:58:50
@@ -89,22 +105,21 @@ La gateway sert à connecter ma machine au réseau internet et permet de sortir 
         - ipconfig /release
         - ipconfig /renew
 
-
-### DNS ###
+### DNS
 * Adresse DNS : 8.8.8.8
 * Adresse google.com : 216.58.215.46
 * Adresse ynov.com : 217.70.184.38
 
 Après un reverse lookup, on obtient : 
 
-PS C:\Users\evanb> nslookup 78.78.21.21
+PS C:\Users> nslookup 78.78.21.21
 * Serveur :   UnKnown
 * Address:  10.33.10.20
 
 * Nom :    host-78-78-21-21.mobileonline.telia.com
 * Address:  78.78.21.21
 
-PS C:\Users\evanb> nslookup 92.16.54.88
+PS C:\Users> nslookup 92.16.54.88
 * Serveur :   UnKnown
 * Address:  10.33.10.20
 
