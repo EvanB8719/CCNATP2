@@ -72,3 +72,13 @@ PING 192.168.127.10 (192.168.127.10) 56(84) bytes of data.
 --- 192.168.127.10 ping statistics ---
 25 packets transmitted, 25 received, 0% packet loss, time 23999ms
 rtt min/avg/max/mdev = 0.036/0.046/0.125/0.022 ms
+
+#### C- 
+[evan@localhost etc]$ ip route
+default via 10.0.2.2 dev enp0s3 proto dhcp metric 100
+10.0.2.0/24 dev enp0s3 proto kernel scope link src 10.0.2.15 metric 100
+192.168.127.0/24 dev enp0s8 proto kernel scope link src 192.168.127.10 metric 101
+
+### 5. Faire joujou avec quelques commandes
+
+#### A Faire:
