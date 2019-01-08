@@ -82,3 +82,5 @@ default via 10.0.2.2 dev enp0s3 proto dhcp metric 100
 ### 5. Faire joujou avec quelques commandes
 
 #### A Faire:
+* ping 
+* ping hôte -> VM
