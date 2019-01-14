@@ -84,3 +84,19 @@ default via 10.0.2.2 dev enp0s3 proto dhcp metric 100
 #### A Faire:
 ##### ping 
 * ping hôte -> VM
+
+
+* ping VM -> hôte
+
+##### afficher la table de routage
+* de l'hôte :
+[evan@localhost ~]$ ip route
+default via 10.0.2.2 dev enp0s3 proto dhcp metric 100
+10.0.2.0/24 dev enp0s3 proto kernel scope link src 10.0.2.15 metric 100
+192.168.127.0/24 dev enp0s8 proto kernel scope link src 192.168.127.10 metric 101
+
+* de la VM :
+[evan@localhost ~]$ ip route
+default via 10.0.2.2 dev enp0s3 proto dhcp metric 100
+10.0.2.0/24 dev enp0s3 proto kernel scope link src 10.0.2.15 metric 100
+192.168.127.0/24 dev enp0s8 proto kernel scope link src 192.168.127.10 metric 101
