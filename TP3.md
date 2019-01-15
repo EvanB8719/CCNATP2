@@ -164,6 +164,8 @@ Bilan des adresses IP:
 
 #### PC1 et PC2
 
+ping PC2 au réseau 1 :
+
 PS C:\WINDOWS\system32> route add 192.168.101.0/24 mask 255.255.255.0 192.168.112.9
  OK!
 PS C:\WINDOWS\system32> ping 192.168.101.1
@@ -179,15 +181,69 @@ Statistiques Ping pour 192.168.101.1:
 Durée approximative des boucles en millisecondes :
     Minimum = 0ms, Maximum = 1ms, Moyenne = 0ms
 
+VM2 vers réseau 1: 
+
+[evan@localhost ~]$ ping 192.168.101.1
+PING 192.168.101.1 (192.168.101.1) 56(84) bytes of data.
+64 bytes from 192.168.101.1: icmp_seq=1 ttl=126 time=1.38 ms
+64 bytes from 192.168.101.1: icmp_seq=2 ttl=126 time=0.891 ms
+64 bytes from 192.168.101.1: icmp_seq=3 ttl=126 time=1.10 ms
+64 bytes from 192.168.101.1: icmp_seq=4 ttl=126 time=1.05 ms
+64 bytes from 192.168.101.1: icmp_seq=5 ttl=126 time=1.14 ms
+^Z
+[3]+  Stopped                 ping 192.168.101.1
+
+VM2 au réseau 12 :
+
+[evan@localhost ~]$ ping 192.168.112.1
+PING 192.168.112.1 (192.168.112.1) 56(84) bytes of data.
+64 bytes from 192.168.112.1: icmp_seq=1 ttl=127 time=1.27 ms
+64 bytes from 192.168.112.1: icmp_seq=2 ttl=127 time=1.21 ms
+64 bytes from 192.168.112.1: icmp_seq=3 ttl=127 time=1.34 ms
+64 bytes from 192.168.112.1: icmp_seq=4 ttl=127 time=1.15 ms
+^C
+--- 192.168.112.1 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3003ms
+rtt min/avg/max/mdev = 1.159/1.249/1.341/0.067 ms
 
 
+#### 3. Configuration des noms de domaine
 
+vm2 à pc1 :
+[evan@localhost ~]$ ping pc1.tp3.b1
+PING pc1.tp3.b1 (192.168.112.1) 56(84) bytes of data.
+64 bytes from pc1.tp3.b1 (192.168.112.1): icmp_seq=1 ttl=127 time=1.00 ms
+64 bytes from pc1.tp3.b1 (192.168.112.1): icmp_seq=2 ttl=127 time=1.02 ms
+64 bytes from pc1.tp3.b1 (192.168.112.1): icmp_seq=3 ttl=127 time=0.976 ms
+64 bytes from pc1.tp3.b1 (192.168.112.1): icmp_seq=4 ttl=127 time=0.988 ms
+^C
+--- pc1.tp3.b1 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3004ms
+rtt min/avg/max/mdev = 0.976/1.000/1.028/0.029 ms
 
+vm2 à pc2 :
+[evan@localhost ~]$ ping pc2.tp3.b1
+PING pc2.tp3.b1 (192.168.102.1) 56(84) bytes of data.
+64 bytes from pc2.tp3.b1 (192.168.102.1): icmp_seq=1 ttl=128 time=1.35 ms
+64 bytes from pc2.tp3.b1 (192.168.102.1): icmp_seq=2 ttl=128 time=0.355 ms
+64 bytes from pc2.tp3.b1 (192.168.102.1): icmp_seq=3 ttl=128 time=0.299 ms
+64 bytes from pc2.tp3.b1 (192.168.102.1): icmp_seq=4 ttl=128 time=0.629 ms
+^C
+--- pc2.tp3.b1 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3002ms
+rtt min/avg/max/mdev = 0.299/0.660/1.357/0.421 ms
 
-
-
-
-
+vm2 à vm1 :
+[evan@localhost ~]$ ping vm1.tp3.b1
+PING vm1.tp3.b1 (192.168.101.10) 56(84) bytes of data.
+64 bytes from vm1.tp3.b1 (192.168.101.10): icmp_seq=1 ttl=62 time=1.55 ms
+64 bytes from vm1.tp3.b1 (192.168.101.10): icmp_seq=2 ttl=62 time=1.04 ms
+64 bytes from vm1.tp3.b1 (192.168.101.10): icmp_seq=3 ttl=62 time=1.30 ms
+64 bytes from vm1.tp3.b1 (192.168.101.10): icmp_seq=4 ttl=62 time=1.35 ms
+^C
+--- vm1.tp3.b1 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3004ms
+rtt min/avg/max/mdev = 1.048/1.314/1.552/0.181 ms
 
 
 
