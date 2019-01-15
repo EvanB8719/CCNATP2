@@ -100,3 +100,113 @@ default via 10.0.2.2 dev enp0s3 proto dhcp metric 100
 default via 10.0.2.2 dev enp0s3 proto dhcp metric 100
 10.0.2.0/24 dev enp0s3 proto kernel scope link src 10.0.2.15 metric 100
 192.168.127.0/24 dev enp0s8 proto kernel scope link src 192.168.127.10 metric 101
+
+
+#### III. Routage statique
+
+##### 1. Préparation des hôtes (vos PCs)
+
+ping vers le PC1 : 
+
+PS C:\Users\evanb> ping 192.168.112.9
+
+Envoi d’une requête 'Ping'  192.168.112.9 avec 32 octets de données :
+Réponse de 192.168.112.9 : octets=32 temps<1ms TTL=128
+Réponse de 192.168.112.9 : octets=32 temps=4 ms TTL=128
+Réponse de 192.168.112.9 : octets=32 temps=1 ms TTL=128
+Réponse de 192.168.112.9 : octets=32 temps<1ms TTL=128
+
+Statistiques Ping pour 192.168.112.9:
+    Paquets : envoyés = 4, reçus = 4, perdus = 0 (perte 0%),
+Durée approximative des boucles en millisecondes :
+    Minimum = 0ms, Maximum = 4ms, Moyenne = 1ms
+
+ping VM2 et PC2 : 
+
+PS C:\Users\evanb>  ping 192.168.102.10
+
+Envoi d’une requête 'Ping'  192.168.102.10 avec 32 octets de données :
+Réponse de 192.168.102.10 : octets=32 temps<1ms TTL=64
+Réponse de 192.168.102.10 : octets=32 temps<1ms TTL=64
+Réponse de 192.168.102.10 : octets=32 temps<1ms TTL=64
+Réponse de 192.168.102.10 : octets=32 temps<1ms TTL=64
+
+Statistiques Ping pour 192.168.102.10:
+    Paquets : envoyés = 4, reçus = 4, perdus = 0 (perte 0%),
+Durée approximative des boucles en millisecondes :
+    Minimum = 0ms, Maximum = 0ms, Moyenne = 0ms
+
+[evan@localhost ~]$ ping 192.168.102.1
+PING 192.168.102.1 (192.168.102.1) 56(84) bytes of data.
+64 bytes from 192.168.102.1: icmp_seq=1 ttl=128 time=0.331 ms
+64 bytes from 192.168.102.1: icmp_seq=2 ttl=128 time=0.311 ms
+64 bytes from 192.168.102.1: icmp_seq=3 ttl=128 time=0.385 ms
+64 bytes from 192.168.102.1: icmp_seq=4 ttl=128 time=0.348 ms
+64 bytes from 192.168.102.1: icmp_seq=5 ttl=128 time=0.353 ms
+64 bytes from 192.168.102.1: icmp_seq=6 ttl=128 time=0.306 ms
+64 bytes from 192.168.102.1: icmp_seq=7 ttl=128 time=0.336 ms
+64 bytes from 192.168.102.1: icmp_seq=8 ttl=128 time=0.299 ms
+64 bytes from 192.168.102.1: icmp_seq=9 ttl=128 time=0.321 ms
+^Z
+[1]+  Stopped                 ping 192.168.102.1
+
+### 2. Configuration du routage
+
+Bilan des adresses IP:
+
+        Carte Ethernet PC1 : 192.168.112.9
+        Carte Host-Only PC1 : 192.168.101.1
+        Carte Host-Only VM1 : 192.168.101.10
+
+        Carte Ethernet PC2 : 192.168.112.22
+        Carte Host-Only PC2 : 192.168.102.1
+        Carte Host-Only VM2 : 192.168.102.10
+
+#### PC1 et PC2
+
+PS C:\WINDOWS\system32> route add 192.168.101.0/24 mask 255.255.255.0 192.168.112.9
+ OK!
+PS C:\WINDOWS\system32> ping 192.168.101.1
+
+Envoi d’une requête 'Ping'  192.168.101.1 avec 32 octets de données :
+Réponse de 192.168.101.1 : octets=32 temps<1ms TTL=127
+Réponse de 192.168.101.1 : octets=32 temps=1 ms TTL=127
+Réponse de 192.168.101.1 : octets=32 temps=1 ms TTL=127
+Réponse de 192.168.101.1 : octets=32 temps=1 ms TTL=127
+
+Statistiques Ping pour 192.168.101.1:
+    Paquets : envoyés = 4, reçus = 4, perdus = 0 (perte 0%),
+Durée approximative des boucles en millisecondes :
+    Minimum = 0ms, Maximum = 1ms, Moyenne = 0ms
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
