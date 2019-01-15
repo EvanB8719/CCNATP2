@@ -106,7 +106,7 @@ default via 10.0.2.2 dev enp0s3 proto dhcp metric 100
 
 ##### 1. Préparation des hôtes (vos PCs)
 
-ping vers le PC1 : 
+* ping vers le PC1 : 
 
 PS C:\Users\evanb> ping 192.168.112.9
 
@@ -121,7 +121,7 @@ Statistiques Ping pour 192.168.112.9:
 Durée approximative des boucles en millisecondes :
     Minimum = 0ms, Maximum = 4ms, Moyenne = 1ms
 
-ping VM2 et PC2 : 
+* ping VM2 et PC2 : 
 
 PS C:\Users\evanb>  ping 192.168.102.10
 
@@ -164,7 +164,7 @@ Bilan des adresses IP:
 
 #### PC1 et PC2
 
-ping PC2 au réseau 1 :
+* ping PC2 au réseau 1 :
 
 PS C:\WINDOWS\system32> route add 192.168.101.0/24 mask 255.255.255.0 192.168.112.9
  OK!
@@ -181,7 +181,7 @@ Statistiques Ping pour 192.168.101.1:
 Durée approximative des boucles en millisecondes :
     Minimum = 0ms, Maximum = 1ms, Moyenne = 0ms
 
-VM2 vers réseau 1: 
+* VM2 vers réseau 1: 
 
 [evan@localhost ~]$ ping 192.168.101.1
 PING 192.168.101.1 (192.168.101.1) 56(84) bytes of data.
@@ -193,7 +193,7 @@ PING 192.168.101.1 (192.168.101.1) 56(84) bytes of data.
 ^Z
 [3]+  Stopped                 ping 192.168.101.1
 
-VM2 au réseau 12 :
+* VM2 au réseau 12 :
 
 [evan@localhost ~]$ ping 192.168.112.1
 PING 192.168.112.1 (192.168.112.1) 56(84) bytes of data.
@@ -209,7 +209,7 @@ rtt min/avg/max/mdev = 1.159/1.249/1.341/0.067 ms
 
 #### 3. Configuration des noms de domaine
 
-vm2 à pc1 :
+* vm2 à pc1 :
 [evan@localhost ~]$ ping pc1.tp3.b1
 PING pc1.tp3.b1 (192.168.112.1) 56(84) bytes of data.
 64 bytes from pc1.tp3.b1 (192.168.112.1): icmp_seq=1 ttl=127 time=1.00 ms
@@ -221,7 +221,7 @@ PING pc1.tp3.b1 (192.168.112.1) 56(84) bytes of data.
 4 packets transmitted, 4 received, 0% packet loss, time 3004ms
 rtt min/avg/max/mdev = 0.976/1.000/1.028/0.029 ms
 
-vm2 à pc2 :
+* vm2 à pc2 :
 [evan@localhost ~]$ ping pc2.tp3.b1
 PING pc2.tp3.b1 (192.168.102.1) 56(84) bytes of data.
 64 bytes from pc2.tp3.b1 (192.168.102.1): icmp_seq=1 ttl=128 time=1.35 ms
@@ -233,7 +233,7 @@ PING pc2.tp3.b1 (192.168.102.1) 56(84) bytes of data.
 4 packets transmitted, 4 received, 0% packet loss, time 3002ms
 rtt min/avg/max/mdev = 0.299/0.660/1.357/0.421 ms
 
-vm2 à vm1 :
+* vm2 à vm1 :
 [evan@localhost ~]$ ping vm1.tp3.b1
 PING vm1.tp3.b1 (192.168.101.10) 56(84) bytes of data.
 64 bytes from vm1.tp3.b1 (192.168.101.10): icmp_seq=1 ttl=62 time=1.55 ms
