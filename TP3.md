@@ -84,22 +84,67 @@ default via 10.0.2.2 dev enp0s3 proto dhcp metric 100
 #### A Faire:
 ##### ping 
 * ping hôte -> VM
+ping 192.168.102.10
 
+Envoi d’une requête 'Ping'  192.168.102.10 avec 32 octets de données :
+Réponse de 192.168.102.10 : octets=32 temps<1ms TTL=64
+Réponse de 192.168.102.10 : octets=32 temps<1ms TTL=64
 
 * ping VM -> hôte
+ping 192.168.102.1
+PING 192.168.102.1 (192.168.102.1) 56(84) bytes of data.
+64 bytes from 192.168.102.1: icmp_seq=1 ttl=128 time=0.243 ms
+64 bytes from 192.168.102.1: icmp_seq=2 ttl=128 time=0.327 ms
 
 ##### afficher la table de routage
 * de l'hôte :
-[evan@localhost ~]$ ip route
-default via 10.0.2.2 dev enp0s3 proto dhcp metric 100
-10.0.2.0/24 dev enp0s3 proto kernel scope link src 10.0.2.15 metric 100
-192.168.127.0/24 dev enp0s8 proto kernel scope link src 192.168.127.10 metric 101
+IPv4 Table de routage
+===========================================================================
+Itinéraires actifs :
+Destination réseau    Masque réseau  Adr. passerelle   Adr. interface Métrique
+          0.0.0.0          0.0.0.0    192.168.1.254     192.168.1.22     50
+        127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
+        127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
+  127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+      192.168.1.0    255.255.255.0         On-link      192.168.1.22    306
+     192.168.1.22  255.255.255.255         On-link      192.168.1.22    306
+    192.168.1.255  255.255.255.255         On-link      192.168.1.22    306
+     192.168.56.0    255.255.255.0         On-link      192.168.56.1    281
+     192.168.56.1  255.255.255.255         On-link      192.168.56.1    281
+   192.168.56.255  255.255.255.255         On-link      192.168.56.1    281
+    192.168.102.0    255.255.255.0         On-link     192.168.102.1    281
+    192.168.102.1  255.255.255.255         On-link     192.168.102.1    281
+  192.168.102.255  255.255.255.255         On-link     192.168.102.1    281
+        224.0.0.0        240.0.0.0         On-link         127.0.0.1    331
+        224.0.0.0        240.0.0.0         On-link      192.168.56.1    281
+        224.0.0.0        240.0.0.0         On-link     192.168.102.1    281
+        224.0.0.0        240.0.0.0         On-link      192.168.1.22    306
+  255.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+  255.255.255.255  255.255.255.255         On-link      192.168.56.1    281
+  255.255.255.255  255.255.255.255         On-link     192.168.102.1    281
+  255.255.255.255  255.255.255.255         On-link      192.168.1.22    306
+===========================================================================
+Itinéraires persistants :
+  Adresse réseau    Masque réseau  Adresse passerelle Métrique
+          0.0.0.0          0.0.0.0    192.168.112.1  Par défaut
+===========================================================================
 
 * de la VM :
 [evan@localhost ~]$ ip route
 default via 10.0.2.2 dev enp0s3 proto dhcp metric 100
 10.0.2.0/24 dev enp0s3 proto kernel scope link src 10.0.2.15 metric 100
 192.168.127.0/24 dev enp0s8 proto kernel scope link src 192.168.127.10 metric 101
+
+### II. Notion de ports SSH
+ss -n -p -l
+
+tcp    LISTEN     0      128                          :::22                                     :::*                   users:(("sshd",pid=3154,fd=4))
+SSh écoute sur le port 22 du PC
+
+C:\Users\evanb>ssh evan@192.168.102.10 -p 2222
+toor@192.168.102.10's password:
+Last login: Tue Jan 15 16:43:25 2019 from pc2
+[evan@localhost ~]$
 
 
 #### III. Routage statique
@@ -245,8 +290,12 @@ PING vm1.tp3.b1 (192.168.101.10) 56(84) bytes of data.
 4 packets transmitted, 4 received, 0% packet loss, time 3004ms
 rtt min/avg/max/mdev = 1.048/1.314/1.552/0.181 ms
 
+#### Netcat :
 
-
+nc vm1.tp3.b1 5454
+Test 
+Salut
+Jsp
 
 
 
