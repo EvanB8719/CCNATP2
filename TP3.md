@@ -293,9 +293,9 @@ rtt min/avg/max/mdev = 1.048/1.314/1.552/0.181 ms
 #### Netcat :
 
 * nc vm1.tp3.b1 5454
-* Test 
-* Salut
-* Jsp
+ Test 
+ Salut
+ Jsp
 
 
 
