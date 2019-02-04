@@ -90,7 +90,7 @@ rtt min/avg/max/mdev = 0.613/0.643/0.674/0.039 ms
 
 ## 1. ARP ##
 
-###1 : vider la table ARP de toutes vos machines -> fait ###
+### 1 : vider la table ARP de toutes vos machines -> fait ###
 
 ### 2 : Sur client1 : ###
 ```
