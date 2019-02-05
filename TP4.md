@@ -149,45 +149,22 @@ La dernière ligne est en delay, elle est en attente et se fera aprés. Si on fa
 #### table arp : ####
 ```
 PS C:\WINDOWS\system32> arp -a
-Interface : 10.1.0.1 --- 0x3
-Adresse Internet      Adresse physique      Type
-10.1.0.10             08-00-27-21-bc-16     dynamique
-10.1.0.254            08-00-27-01-70-2c     dynamique
-10.1.0.255            ff-ff-ff-ff-ff-ff     statique
-224.0.0.22            01-00-5e-00-00-16     statique
-224.0.0.251           01-00-5e-00-00-fb     statique
-224.0.0.252           01-00-5e-00-00-fc     statique
-239.255.255.250       01-00-5e-7f-ff-fa     statique
+Interface : 10.1.0.1 --- 0x5
+  Adresse Internet      Adresse physique      Type
+  10.1.0.255            ff-ff-ff-ff-ff-ff     statique
+  224.0.0.22            01-00-5e-00-00-16     statique
+  224.0.0.251           01-00-5e-00-00-fb     statique
+  224.0.0.252           01-00-5e-00-00-fc     statique
+  239.255.255.250       01-00-5e-7f-ff-fa     statique
+  255.255.255.255       ff-ff-ff-ff-ff-ff     statique
 
-Interface : 10.2.0.1 --- 0x10
-Adresse Internet      Adresse physique      Type
-10.2.0.10             08-00-27-75-26-da     dynamique
-10.2.0.255            ff-ff-ff-ff-ff-ff     statique
-224.0.0.22            01-00-5e-00-00-16     statique
-224.0.0.251           01-00-5e-00-00-fb     statique
-224.0.0.252           01-00-5e-00-00-fc     statique
-239.255.255.250       01-00-5e-7f-ff-fa     statique
-255.255.255.255       ff-ff-ff-ff-ff-ff     statique
-table arp vidé.
-```
-#### Nouvelle arp : ####
-```
-PS C:\WINDOWS\system32> arp -a
-
-Interface : 10.1.0.1 --- 0x3
-Adresse Internet      Adresse physique      Type
-224.0.0.22            01-00-5e-00-00-16     statique
-239.255.255.250       01-00-5e-7f-ff-fa     statique
-
-Interface : 10.2.0.1 --- 0x10
-Adresse Internet      Adresse physique      Type
-224.0.0.22            01-00-5e-00-00-16     statique
-239.255.255.250       01-00-5e-7f-ff-fa     statique
-En vidant l'arp, cela a supprimé les requêtes faites au pc1 et pc2.
-D. Manip 4
-vider la table ARP de toutes vos machines : fait
-
-réseau nat activé.
+Interface : 10.2.0.1 --- 0x10
+  Adresse Internet      Adresse physique      Type
+  10.2.0.255            ff-ff-ff-ff-ff-ff     statique
+  224.0.0.22            01-00-5e-00-00-16     statique
+  224.0.0.251           01-00-5e-00-00-fb     statique
+  224.0.0.252           01-00-5e-00-00-fc     statique
+  239.255.255.250       01-00-5e-7f-ff-fa     statique
 ```
 ### table arp aprés curl : ###
 ```
