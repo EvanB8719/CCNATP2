@@ -127,13 +127,12 @@ rtt min/avg/max/mdev = 0.613/0.643/0.674/0.039 ms
 [evan@router1 ~]$ ip neigh show
 10.1.0.1 dev enp0s8 lladdr 0a:00:27:00:00:05 REACHABLE
 10.2.0.1 dev enp0s9 lladdr 0a:00:27:00:00:10 STALE
-
+```
 ### 2 : PC : ###
 
 #### table arp : ####
 ```
 PS C:\Users\evanb> arp -a
-
 Interface : 10.1.0.1 --- 0x5
   Adresse Internet      Adresse physique      Type
   10.1.0.10             08-00-27-eb-80-e4     dynamique
