@@ -1,3 +1,5 @@
+# TP 5. Premier pas dans le monde Cisco #
+Preparation des VMs de GNS3 pour commencer le tp.
 ### Ping client1 à client2 ###
 ```
 [evan@client1 ~]$ ping client2
@@ -78,4 +80,23 @@ PING client2 (10.5.2.11) 56(84) bytes of data.
 --- client2 ping statistics ---
 4 packets transmitted, 4 received, 0% packet loss, time 3016ms
 rtt min/avg/max/mdev = 34.319/37.816/41.378/2.910 ms
+```
+### Route des VMs: ###
+```
+[evan@client1 ~]$ ip route show
+10.5.1.0/24 via 10.5.2.254 dev enp0s3 proto static metric 101
+10.5.2.0/24 dev enp0s3 proto kernel scope link src 10.5.2.10 metric 101
+192.168.240.0/24 dev enp0s8 proto kernel scope link src 192.168.240.5 metric 100
+```
+```
+[evan@server1 ~]$ ip route show
+10.5.1.0/24 via 10.5.2.254 dev enp0s3 proto static metric 101
+10.5.2.0/24 dev enp0s3 proto kernel scope link src 10.5.2.11 metric 101
+192.168.240.0/24 dev enp0s8 proto kernel scope link src 192.168.240.6 metric 100
+```
+```
+[evan@client2 ~]$ ip route show
+10.5.1.0/24 dev enp0s3 proto kernel scope link src 10.5.1.10 metric 101
+10.5.2.0/24 via 10.5.1.254 dev enp0s3 proto static metric 101
+192.168.240.0/24 dev enp0s8 proto kernel scope link src 192.168.240.4 metric 102
 ```
