@@ -1,4 +1,4 @@
-###Ping client1 à client2 ###
+### Ping client1 à client2 ###
 ```
 [evan@client1 ~]$ ping client2
 PING client2 (10.5.2.11) 56(84) bytes of data.
