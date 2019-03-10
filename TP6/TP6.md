@@ -49,6 +49,46 @@ Ethernet0/3                unassigned      YES unset  administratively down down
 ```
 
  #### Définition du nom de domaine ####
+R1:
+```
+R1#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+R1(config)#hostname r1.tp6.b1
+r1.tp6.b1(config)#exit
+r1.tp6.b1#
+```
+R2:
+```
+R2#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+R2(config)#hostname r2.tp6.b1
+r2.tp6.b1(config)#exit
+r2.tp6.b1#
+```
+R3:
+```
+R3#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+R3(config)#hostname r3.tp6.b1
+r3.tp6.b1(config)#exit
+r3.tp6.b1#
 
+```
+R4:
+```
+R4#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+R4(config)#hostname r4.tp6.b1
+r4.tp6.b1(config)#exit
+r4.tp6.b1#r
 
+```
+R5:
+```
+R5#conf t
+R5(config)#hostname r5.tp6.b1
+r5.tp6.b1(config)#exit
+r5.tp6.b1#
 
+```
+### Checklist VMs ###
