@@ -92,3 +92,25 @@ r5.tp6.b1#
 
 ```
 ### Checklist VMs ###
+Toutes les VMs sont ok.
+
+J'ai configuré tous les router. 
+### show ip protocols: ###
+```
+Routing for Networks:
+    10.6.101.0 0.0.0.3 area 0
+    10.6.201.0 0.0.0.255 area 0
+ Reference bandwidth unit is 100 mbps
+  Routing Information Sources:
+    Gateway         Distance      Last Update
+    4.4.4.4              110      00:08:10
+    1.1.1.1              110      00:08:10
+    2.2.2.2              110      00:08:10
+    3.3.3.3              110      00:08:10
+  Distance: (default is 110)
+```
+### show ip ospf neighbor: ###
+```
+Neighbor ID     Pri   State           Dead Time   Address         Interface
+3.3.3.3           1   FULL/DR         00:00:39    10.6.101.1      Ethernet0/0
+```
