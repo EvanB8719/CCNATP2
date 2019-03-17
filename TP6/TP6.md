@@ -94,6 +94,8 @@ r5.tp6.b1#
 ### Checklist VMs ###
 Toutes les VMs sont ok.
 
+## Configuration de OSPF ##
+
 J'ai configuré tous les router. 
 ### show ip protocols: ###
 ```
